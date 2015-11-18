@@ -1,6 +1,5 @@
 (function() {
   'use strict';
 
-  var canvas = document.getElementById('canvas');
-  // new ConvoyJS.View().start(canvas);
+  new CJS.View().start(document.getElementById('canvas'));
 }());
