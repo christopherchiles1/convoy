@@ -51,27 +51,44 @@
   * #draw - draws level, items, units, then attacks
   * #toggle - toggle tick on and off (pause game)
   * #tick - run all tasks for this tick (listed below)
-  * #move - run move on all units and attacks
-  * #collide - run collision detect on player leader
-  * #collect - run collect action for player
+  * #move - run move on player, enemies, then attacks
+  * #collideLeader - run collision detect on player leader (end game)
   * #attack - run attack action for player if attack-tick, then enemies if attack-tick
+  * #damage - run collision detect on attacks and damage associated units
+  * #over - check if player convoy is empty (end game)
+  * #collect - run collect action for player (player collision w/ items)
 
 ### Convoy < List
   * .leader - returns the head of the List
-  * #turn - tells leader to turn
+  * #turn - tells leader to turn (note: may need to use a queue to avoid unresponsive keypresses)
 
 ### Unit < ListNode
-  * .type - Warrior, Archer, or Mage
+  * .type - Warrior, Archer, or Mage (defines animation and attack type)
+  * .health
+  * .range
+  * .arc
+  * .attackRate
   * .position - tuple
   * .direction - tuple
   * .turn - nested tuple with [pos, dir] of the turn
   * #move - runs updates position based on direction and turn. Passes turn on to next unit if executed
   * #collect - look for items in range and collect them (Note: PLAYER ONLY)
   * #attack - looks for enemies in range and creates an Attack
+  * #takeDamage - lower health and remove if dead
 
 ### Attack
+  * .position
+  * .direction
+  * .duration - number of ticks (negative for projectiles)
+  * .strength
+  * .range
+  * .arc
+  * #move - update position with direction
 
-TODO: Plan Attack class, think about sprite animation control, and go through to find any other loose ends and unimplemented bits.
+### Item
+
+
+TODO: think about sprite animation control, and go through to find any other loose ends and unimplemented bits.
 
 ---
 
