@@ -53,6 +53,33 @@
   * #tick - run all tasks for this tick (listed below)
   * #move - run move on all units and attacks
   * #collide - run collision detect on player leader
-  * #act - run actions for player, then enemies
+  * #collect - run collect action for player
+  * #attack - run attack action for player if attack-tick, then enemies if attack-tick
+
+### Convoy < List
+  * .leader - returns the head of the List
+  * #turn - tells leader to turn
+
+### Unit < ListNode
+  * .type - Warrior, Archer, or Mage
+  * .position - tuple
+  * .direction - tuple
+  * .turn - nested tuple with [pos, dir] of the turn
+  * #move - runs updates position based on direction and turn. Passes turn on to next unit if executed
+  * #collect - look for items in range and collect them (Note: PLAYER ONLY)
+  * #attack - looks for enemies in range and creates an Attack
+
+---
+
+### List
+  * .head
+  * .tail
+  * #append(node)
+  * #remove(node)
+
+### ListNode
+  * .next
+  * .prev
+  * .val
 
 Note: Store canvas context globally (CJS.ctx)
