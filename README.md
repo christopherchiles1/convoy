@@ -69,6 +69,10 @@
   * #collect - look for items in range and collect them (Note: PLAYER ONLY)
   * #attack - looks for enemies in range and creates an Attack
 
+### Attack
+
+TODO: Plan Attack class, think about sprite animation control, and go through to find any other loose ends and unimplemented bits.
+
 ---
 
 ### List
