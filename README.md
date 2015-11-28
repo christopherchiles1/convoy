@@ -25,15 +25,18 @@
   * .full - boolean (full screen or game overlay menu)
   * .options - nested array of MenuOptions
   * .selected - tuple
-  * # navigate(dir)
-  * # enter - runs the selected MenuOption's callback
+  * #navigate(dir)
+  * #enter - runs the selected MenuOption's callback
+  * #draw - draws background (if full), then options
 
-### MenuOption (not rechecked yet)
+### MenuOption
+  * ::new - sets text, position, callback from input
   * .text
   * .position
   * .callback
 
 ### Game
+  * ::new
   * .running - boolean
   * .units - array of units (radix sort by y-value before render)
   * .items - list of items (using a list for fast insert and delete)
@@ -52,23 +55,31 @@
   * #drawHud - draws HUD information
   * #draw - draws level, items, units, attacks, and hud
 
-### Sprite (not rechecked yet)
+### Sprite
+  * ::new
   * .image
   * .width
   * .height
   * .positions - array of tuples
   * #draw(pos) - draws the frame at positions[pos]. draws positions[0] if no input
 
+### Convoy < List
+  * ::new
+  * .leader - returns the head of the List
+  * #turn - tells leader to turn (note: may need to use a queue to avoid unresponsive keypresses)
+
+### PlayerConvoy < Convoy
+  * ::new - calls super and then appends Unit from input
+
+### EnemyConvoy < Convoy
+  * ::new - calls super and the appends all Units from input array
+  * #turn - check possible collision with player or wall. If collision, try turning and recheck. If all directions are blocked, kill the convoy. Once a turn is chosen, call super with that turn
+
 ### Level (not rechecked yet)
   * .enemies - array (queue) of enemy convoys
   * .spawnRate - in milliseconds
   * .difficulty - modifier for enemies
   * .bg - nested array of gamebg Sprites
-
-### Convoy < List (not rechecked yet)
-  * .leader - returns the head of the List
-  * #turn - tells leader to turn (note: may need to use a queue to avoid unresponsive keypresses)
-  (note: different turn method needed for ENEMY convoys)
 
 ### Unit < ListNode (not rechecked yet)
   * .frame - used to time attacks and animation (increment on move, mod by ticks/sec)
