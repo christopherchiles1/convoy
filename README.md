@@ -35,12 +35,12 @@
 
 ### Game
   * .running - boolean
+  * .units - array of units (radix sort by y-value before render)
+  * .items - list of items (using a list for fast insert and delete)
+  * .attacks - keys: player, enemy => list of attacks
   * .level - a level object
   * .player - a Convoy object with one hero
-  * .enemies - array of current enemies
-  * .items - array of items
-  * .attacks - array of attacks
-  * #draw - draws level, items, units, then attacks
+  * .enemies - array of current enemy Convoys
   * #toggle - toggle tick on and off (pause game)
   * #tick - run all tasks for this tick (listed below)
   * #move - run move on player, enemies, then attacks
@@ -49,6 +49,8 @@
   * #damage - run collision detect on attacks and damage associated units
   * #over - check if player convoy is empty (end game)
   * #collect - run collect action for player (player collision w/ items)
+  * #drawHud - draws HUD information
+  * #draw - draws level, items, units, attacks, and hud
 
 ### Sprite (not rechecked yet)
   * .image
@@ -66,6 +68,7 @@
 ### Convoy < List (not rechecked yet)
   * .leader - returns the head of the List
   * #turn - tells leader to turn (note: may need to use a queue to avoid unresponsive keypresses)
+  (note: different turn method needed for ENEMY convoys)
 
 ### Unit < ListNode (not rechecked yet)
   * .frame - used to time attacks and animation (increment on move, mod by ticks/sec)
