@@ -75,13 +75,16 @@
   * ::new - calls super and the appends all Units from input array
   * #turn - check possible collision with player or wall. If collision, try turning and recheck. If all directions are blocked, kill the convoy. Once a turn is chosen, call super with that turn
 
-### Level (not rechecked yet)
+### Level
+  * ::new
+  * .bg - nested array of gamebg Sprites
   * .enemies - array (queue) of enemy convoys
   * .spawnRate - in milliseconds
   * .difficulty - modifier for enemies
-  * .bg - nested array of gamebg Sprites
+  * #draw - draws the background sprites
 
-### Unit < ListNode (not rechecked yet)
+### Unit < ListNode
+  * ::new
   * .frame - used to time attacks and animation (increment on move, mod by ticks/sec)
   * .type - Warrior, Archer, or Mage (defines animation and attack type)
   * .health
@@ -120,13 +123,14 @@
 
 ---
 
-### List (not rechecked yet)
+### List
+  * ::new
   * .head
   * .tail
   * #append(node)
   * #remove(node)
 
-### ListNode (not rechecked yet)
+### ListNode
   * .next
   * .prev
   * .val
