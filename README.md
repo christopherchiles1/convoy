@@ -23,7 +23,7 @@
   * .width
   * .height
   * .positions - array of tuples
-  * #draw(pos)
+  * #draw(pos) - draws the frame at positions[pos]. draws positions[0] if no input
 
 ### Menu
   * .options - nested array of MenuOptions
@@ -63,6 +63,7 @@
   * #turn - tells leader to turn (note: may need to use a queue to avoid unresponsive keypresses)
 
 ### Unit < ListNode
+  * .frame - used to time attacks and animation (increment on move, mod by ticks/sec)
   * .type - Warrior, Archer, or Mage (defines animation and attack type)
   * .health
   * .range
@@ -77,9 +78,9 @@
   * #takeDamage - lower health and remove if dead
 
 ### Attack
+  * .frame - used to time animation (increment on move). Remove attack after last frame.
   * .position
   * .direction
-  * .duration - number of ticks (negative for projectiles)
   * .strength
   * .range
   * .arc
@@ -88,7 +89,7 @@
 ### Item
 
 
-TODO: think about sprite animation control, and go through to find any other loose ends and unimplemented bits.
+TODO: go through to find any other loose ends and unimplemented bits.
 
 ---
 
