@@ -76,9 +76,11 @@
   * #collect - look for items in range and collect them (Note: PLAYER ONLY)
   * #attack - looks for enemies in range and creates an Attack
   * #takeDamage - lower health and remove if dead
+  * #dropItem - create item at position with some chance
 
 ### Attack
-  * .frame - used to time animation (increment on move). Remove attack after last frame.
+  * .frame - used to time animation (increment on move)
+  * .duration - remove attack when duration hits 0 (decrement on move)
   * .position
   * .direction
   * .strength
@@ -86,10 +88,16 @@
   * .arc
   * #move - update position with direction
 
-### Item
+### Item (gems and powerups)
+  * .position
+  * .frame - used to time blinking before disappearing (increment on move)
+  * .duration - remove item when duration hits 0 (decrement on move)
+  * .callback - runs when item is collected
 
-
-TODO: go through to find any other loose ends and unimplemented bits.
+### Util
+  * ::inherits(parent, child) - for object oriented programming
+  * ::overlap(obj1, obj2) - returns true/false
+  * ::step(position, delta) - returns new position tuple
 
 ---
 
