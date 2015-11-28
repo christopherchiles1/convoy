@@ -4,45 +4,37 @@
   Convoy is an RPG take on the classic game of Snake. The player controls a convoy of warriors, archers, and mages in an effort to defeat enemy forces surrounding the capitol.
 
 ### View
-  * ::init - create Images, menu, game
-  * .state - game or menu
-  * #start - starts render tick (or requestAnimationFrame)
-  * #draw()
+  * ::new - load Images, bind keys, create menu and game
+  * .menu
+  * .game
+  * #bindKeys - binds keys to handleKey function
+  * #handleKey(event, handler) - calls handleKey(handler.shortcut) on either game or menu
+  * #draw - calls `requestAnimationFrame(this.draw)` first
 
 ### Images (singleton)
+  * ::load - loads all images
   * .menubg
   * .gamebg
   * .alphabet
   * .characters (warrior, archer, and mage)
   * .attacks (sword, arrow, and mage animations)
   * .items (gems and powerups)
-  * #loadAll - loads all images
-
-### Sprite
-  * .image
-  * .width
-  * .height
-  * .positions - array of tuples
-  * #draw(pos) - draws the frame at positions[pos]. draws positions[0] if no input
 
 ### Menu
+  * ::new - sets full and options, selected => [0, 0]
+  * .full - boolean (full screen or game overlay menu)
   * .options - nested array of MenuOptions
   * .selected - tuple
   * # navigate(dir)
   * # enter - runs the selected MenuOption's callback
 
-### MenuOption
+### MenuOption (not rechecked yet)
   * .text
   * .position
   * .callback
 
-### Level
-  * .enemies - array (queue) of enemy convoys
-  * .spawnRate - in milliseconds
-  * .difficulty - modifier for enemies
-  * .bg - nested array of gamebg Sprites
-
 ### Game
+  * .running - boolean
   * .level - a level object
   * .player - a Convoy object with one hero
   * .enemies - array of current enemies
@@ -58,11 +50,24 @@
   * #over - check if player convoy is empty (end game)
   * #collect - run collect action for player (player collision w/ items)
 
-### Convoy < List
+### Sprite (not rechecked yet)
+  * .image
+  * .width
+  * .height
+  * .positions - array of tuples
+  * #draw(pos) - draws the frame at positions[pos]. draws positions[0] if no input
+
+### Level (not rechecked yet)
+  * .enemies - array (queue) of enemy convoys
+  * .spawnRate - in milliseconds
+  * .difficulty - modifier for enemies
+  * .bg - nested array of gamebg Sprites
+
+### Convoy < List (not rechecked yet)
   * .leader - returns the head of the List
   * #turn - tells leader to turn (note: may need to use a queue to avoid unresponsive keypresses)
 
-### Unit < ListNode
+### Unit < ListNode (not rechecked yet)
   * .frame - used to time attacks and animation (increment on move, mod by ticks/sec)
   * .type - Warrior, Archer, or Mage (defines animation and attack type)
   * .health
@@ -78,7 +83,7 @@
   * #takeDamage - lower health and remove if dead
   * #dropItem - create item at position with some chance
 
-### Attack
+### Attack (not rechecked yet)
   * .frame - used to time animation (increment on move)
   * .duration - remove attack when duration hits 0 (decrement on move)
   * .position
@@ -88,28 +93,26 @@
   * .arc
   * #move - update position with direction
 
-### Item (gems and powerups)
+### Item (gems and powerups) (not rechecked yet)
   * .position
   * .frame - used to time blinking before disappearing (increment on move)
   * .duration - remove item when duration hits 0 (decrement on move)
   * .callback - runs when item is collected
 
-### Util
+### Util (not rechecked yet)
   * ::inherits(parent, child) - for object oriented programming
   * ::overlap(obj1, obj2) - returns true/false
   * ::step(position, delta) - returns new position tuple
 
 ---
 
-### List
+### List (not rechecked yet)
   * .head
   * .tail
   * #append(node)
   * #remove(node)
 
-### ListNode
+### ListNode (not rechecked yet)
   * .next
   * .prev
   * .val
-
-Note: Store canvas context globally (CJS.ctx)
