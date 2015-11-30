@@ -1,4 +1,4 @@
-(function() {
+(function(root) {
   'use strict';
 
   if (typeof root.CJS === "undefined") {
@@ -8,4 +8,4 @@
   CJS.ctx = document.getElementById('canvas').getContext("2d");
   var view = new CJS.View();
   view.draw();
-}());
+}(this));
