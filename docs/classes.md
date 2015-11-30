@@ -29,7 +29,7 @@
   * .images
   * .position
   * .callback
-  * #draw - draws images, passing in 1 if selected
+  * #draw - draws images at position
 
 ### Sprite
   * ::new
@@ -75,10 +75,10 @@
   * .leader - returns the head of the List
   * #turn - tells leader to turn (note: may need to use a queue to avoid unresponsive keypresses)
 
-### PlayerConvoy < Convoy
+### Player < Convoy
   * ::new - calls super and then appends Unit from input
 
-### EnemyConvoy < Convoy
+### Enemy < Convoy
   * ::new - calls super and the appends all Units from input array
   * #turn - check possible collision with player or wall. If collision, try turning and recheck. If all directions are blocked, kill the convoy. Once a turn is chosen, call super with that turn
 
@@ -95,7 +95,7 @@
   * .turn - nested tuple with [pos, dir] of the turn
   * #move - runs updates position based on direction and turn. Passes turn on to next unit if executed
   * #attack - looks for enemies in range and creates an Attack
-  * #takeDamage - lower health and remove if dead
+  * #damage - lower health and remove if dead
   * #dropItem - create item at position with some chance (ENEMY only)
   * #draw - draw this unit's sprite
 
