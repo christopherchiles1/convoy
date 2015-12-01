@@ -72,7 +72,6 @@
 
 ### Convoy < List
   * ::new
-  * .leader - returns the head of the List
   * #turn - tells leader to turn (note: may need to use a queue to avoid unresponsive keypresses)
 
 ### Player < Convoy

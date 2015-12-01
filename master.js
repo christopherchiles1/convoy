@@ -6,6 +6,6 @@
   }
 
   CJS.ctx = document.getElementById('canvas').getContext("2d");
-  var view = new CJS.View();
-  view.draw();
+  CJS.view = new CJS.View();
+  CJS.view.draw();
 }(this));
